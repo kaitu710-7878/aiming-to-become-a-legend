@@ -37,8 +37,9 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
 - **High-Performance & Event-Driven:**  
   Zero per-tick calculations. Data is updated strictly when advancements are earned, mobs are slain, food is consumed, or damage/XP events occur.
 
-- **Legend Notification:**  
-  Whenever your tier increases, a message logs: *"One step closer to becoming a legend."*
+- **Growth & Legend Notifications:**  
+  - Whenever you gain 1 point, you see: *"Feeling yourself growing stronger."*
+  - Whenever you reach a milestone multiple of 5 and gain a buff tier, you see: *"One step closer to becoming a legend."* (point notification is suppressed).
 
 - **Commands:**  
   - `/legend` or `/legend status` - Check your current tier, counts (advancements, mobs, foods), and active attribute bonuses.
@@ -47,7 +48,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
 
 ### Installation
 1. Install [Minecraft Forge](https://files.minecraftforge.net/) for 1.20.1 (recommended 47.3.0 or higher).
-2. Download the latest jar file `aiming_to_become_a_legend-1.3.1-beta.jar` from the release build.
+2. Download the latest jar file `aiming_to_become_a_legend-1.3.2-beta.jar` from the release build.
 3. Place the jar file into your `.minecraft/mods` folder.
 4. Launch the game and embark on your legendary journey!
 
@@ -81,8 +82,9 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
 - **超高パフォーマンス設計 (イベント駆動):**  
   毎tickの重い走査や計算は一切行いません。実績解除時・モブ討伐時・アイテム摂食時のみ差分を判定・加算するため、サーバー負荷は極小です。
 
-- **通知メッセージ:**  
-  新たな段階に到達するたびに「**伝説へ一歩近づいた**」というメッセージが表示されます。
+- **成長および伝説通知メッセージ:**  
+  - 合算値が1増えるごとに「**成長を感じる**」と表示されます。
+  - 5の倍数に達して段階（Tier）が上がった際は「**伝説へ一歩近づいた**」のみが表示され、「成長を感じる」は出力されません。
 
 - **コマンド:**  
   - `/legend` または `/legend status` - 現在の段階、各項目（実績・モブ・食事）の達成数、付与されているステータスボーナスを表示します。
@@ -91,7 +93,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
 
 ### 導入方法
 1. Minecraft 1.20.1 用の [Minecraft Forge](https://files.minecraftforge.net/) (47.3.0以上推奨) をインストールします。
-2. ビルドされた `aiming_to_become_a_legend-1.3.1-beta.jar` をダウンロードします。
+2. ビルドされた `aiming_to_become_a_legend-1.3.2-beta.jar` をダウンロードします。
 3. `.minecraft/mods` ディレクトリに本JARファイルを配置します。
 4. ゲームを起動して伝説への道を歩み始めましょう！
 

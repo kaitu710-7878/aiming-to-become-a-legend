@@ -2,6 +2,7 @@
   "attribute.name.aiming_to_become_a_legend.experience_multiplier": "獲得経験値倍率",
   "attribute.name.aiming_to_become_a_legend.enchant_damage_reduction": "エンチャント全ダメージ軽減率",
   "attribute.name.aiming_to_become_a_legend.legend_damage_reduction": "独自全ダメージ軽減率",
+  "message.aiming_to_become_a_legend.point_gained": "成長を感じる",
   "message.aiming_to_become_a_legend.buff_received": "伝説へ一歩近づいた",
   "message.aiming_to_become_a_legend.buff_received_detailed": "伝説へ一歩近づいた (段階 %s: 実績 %s, 討伐モブ %s, 摂食アイテム %s)",
   "commands.aiming_to_become_a_legend.status.header": "§6=== 伝説への道 進行状況 ===",

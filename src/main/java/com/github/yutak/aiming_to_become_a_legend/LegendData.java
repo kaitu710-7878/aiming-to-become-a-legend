@@ -190,10 +190,21 @@ public class LegendData {
             if (notifyOnTierUp && Config.SERVER.showBuffMessage.get()) {
                 sendBuffNotification(player, targetTier);
             }
-        } else if (targetTier < currentTier) {
-            // In case points decreased or config changed
-            setAppliedTier(player, targetTier);
+        } else {
+            if (targetTier < currentTier) {
+                // In case points decreased or config changed
+                setAppliedTier(player, targetTier);
+            }
+            if (notifyOnTierUp && Config.SERVER.showPointMessage.get()) {
+                sendPointNotification(player);
+            }
         }
+    }
+
+    private static void sendPointNotification(ServerPlayer player) {
+        Component message = Component.translatable("message.aiming_to_become_a_legend.point_gained");
+        boolean actionBar = Config.SERVER.messagePosition.get() == Config.MessagePosition.ACTION_BAR;
+        player.sendSystemMessage(message, actionBar);
     }
 
     private static void sendBuffNotification(ServerPlayer player, int newTier) {

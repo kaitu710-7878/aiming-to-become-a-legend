@@ -19,6 +19,7 @@ public class Config {
     public final ForgeConfigSpec.BooleanValue onlyVisibleAdvancements;
     public final ForgeConfigSpec.BooleanValue ignoreRootAdvancements;
     public final ForgeConfigSpec.BooleanValue showBuffMessage;
+    public final ForgeConfigSpec.BooleanValue showPointMessage;
     public final ForgeConfigSpec.BooleanValue detailedBuffMessage;
     public final ForgeConfigSpec.EnumValue<MessagePosition> messagePosition;
 
@@ -92,9 +93,14 @@ public class Config {
                 .define("ignoreRootAdvancements", true);
 
         showBuffMessage = builder
-                .comment("Whether to show the notification message when reaching a new buff tier.")
+                .comment("Whether to show the notification message ('One step closer to becoming a legend.') when reaching a new buff tier.")
                 .translation("aiming_to_become_a_legend.config.showBuffMessage")
                 .define("showBuffMessage", true);
+
+        showPointMessage = builder
+                .comment("Whether to show the notification message ('Feeling yourself growing stronger.') when gaining 1 point, except when a buff tier is reached.")
+                .translation("aiming_to_become_a_legend.config.showPointMessage")
+                .define("showPointMessage", true);
 
         detailedBuffMessage = builder
                 .comment("Whether to show detailed breakdown (tier, advancements, mobs, foods) in the buff notification.")

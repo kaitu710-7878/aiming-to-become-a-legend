@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.3.2-beta] - 2026-11-07
+
+### Added / 追加
+- **EN:** Added notification message "Feeling yourself growing stronger." whenever milestone points increase by 1. When reaching a multiple of 5 (where "One step closer to becoming a legend." triggers), this point notification is suppressed.
+- **JA:** 合算値が1増えるごとに「成長を感じる」という通知メッセージを出力する機能を追加。合算値が5の倍数に達して「伝説へ一歩近づいた」が出力されるタイミングでは「成長を感じる」が出力されないように制御。
+
+---
+
 ## [1.3.1-beta] - 2026-11-07
 
 ### Changed / 変更

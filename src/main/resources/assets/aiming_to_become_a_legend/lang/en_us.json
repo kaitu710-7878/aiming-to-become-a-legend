@@ -2,6 +2,7 @@
   "attribute.name.aiming_to_become_a_legend.experience_multiplier": "Experience Multiplier",
   "attribute.name.aiming_to_become_a_legend.enchant_damage_reduction": "Enchantment Damage Reduction",
   "attribute.name.aiming_to_become_a_legend.legend_damage_reduction": "Legend Damage Reduction",
+  "message.aiming_to_become_a_legend.point_gained": "Feeling yourself growing stronger.",
   "message.aiming_to_become_a_legend.buff_received": "One step closer to becoming a legend.",
   "message.aiming_to_become_a_legend.buff_received_detailed": "One step closer to becoming a legend. (Tier %s: Advancements %s, Mobs %s, Foods %s)",
   "commands.aiming_to_become_a_legend.status.header": "§6=== Path to Legend Progress ===",

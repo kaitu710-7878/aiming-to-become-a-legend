@@ -23,6 +23,7 @@ Location / 設定ファイル配置場所: `config/aiming_to_become_a_legend-ser
 | `onlyVisibleAdvancements` | Boolean | `true` | true / false | If `true`, only advancements with visible display icons are counted (filters out internal recipe unlocks, etc.). |
 | `ignoreRootAdvancements` | Boolean | `true` | true / false | If `true`, ignores root/parent category advancements (e.g. initial tab icons like 'Nether', 'Story', etc.) to prevent double-counting upon reaching new dimensions. |
 | `showBuffMessage` | Boolean | `true` | true / false | Whether to display the notification message ("One step closer to becoming a legend.") when reaching a new buff tier. |
+| `showPointMessage` | Boolean | `true` | true / false | Whether to display the notification message ("Feeling yourself growing stronger.") when gaining 1 point, except when a buff tier is reached. |
 | `detailedBuffMessage` | Boolean | `false` | true / false | If `true`, shows detailed counts (tier, advancements, mobs, foods) in the notification message. |
 | `messagePosition` | Enum | `"CHAT"` | `"CHAT"`, `"ACTION_BAR"` | Position where the notification message appears. |
 
@@ -44,5 +45,6 @@ Location / 設定ファイル配置場所: `config/aiming_to_become_a_legend-ser
 | `onlyVisibleAdvancements` | 真偽値 (Boolean) | `true` | true / false | `true` の場合、進捗画面に表示される実績のみをカウント対象とします（内部レシピ解放などのカウント混入を防止）。 |
 | `ignoreRootAdvancements` | 真偽値 (Boolean) | `true` | true / false | `true` の場合、タブの起点となる親実績（「ネザー」「冒険」「農業」などの初期項目）をカウントから除外します（ネザー到達時に親項目と到達実績の2重カウントが発生する問題を防止）。 |
 | `showBuffMessage` | 真偽値 (Boolean) | `true` | true / false | 新しい段階に到達した際、「伝説へ一歩近づいた」という通知メッセージを表示するかどうか。 |
+| `showPointMessage` | 真偽値 (Boolean) | `true` | true / false | 合算値が1増えた際、「成長を感じる」という通知メッセージを表示するかどうか（段階到達時は除外）。 |
 | `detailedBuffMessage` | 真偽値 (Boolean) | `false` | true / false | `true` の場合、通知メッセージに現在の段階や実績/モブ/食べ物の各内訳詳細を含めます。 |
 | `messagePosition` | 列挙型 (Enum) | `"CHAT"` | `"CHAT"`, `"ACTION_BAR"` | 通知メッセージの表示位置（チャット欄 または アクションバー）。 |
