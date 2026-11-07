@@ -16,9 +16,9 @@ Location / 設定ファイル配置場所: `config/aiming_to_become_a_legend-ser
 | `damagePerTier` | Double | `0.3` | 0.0 ~ 1000.0 | Attack damage increase gained per buff tier. |
 | `armorPerTier` | Double | `0.5` | 0.0 ~ 1000.0 | Armor points gained per buff tier. |
 | `armorToughnessPerTier` | Double | `0.5` | 0.0 ~ 1000.0 | Armor toughness points gained per buff tier. |
-| `experienceMultiplierPerTier` | Double | `0.1` | 0.0 ~ 100.0 | Experience multiplier gained per buff tier (0.1 = +10%). |
+| `experienceMultiplierPerTier` | Double | `0.1` | 0.0 ~ 100.0 | Experience multiplier gained per buff tier (0.1 = +10%). Directly modifies Apothic Attributes' `attributeslib:experience_gained` when present. |
 | `enchantDamageReductionPerTier` | Double | `0.01` | 0.0 ~ 1.0 | Enchantment-like damage reduction gained per buff tier (0.01 = +1%). Capped at 80% total with armor enchantments, and ineffective if armor already hits the cap. |
-| `legendDamageReductionPerTier` | Double | `0.001` | 0.0 ~ 1.0 | Unique non-enchantment damage reduction gained per buff tier (0.001 = +0.1%). Stacks with enchantment reduction and reduces enchantment-piercing attacks (e.g. L2Hostility Dispel). |
+| `legendDamageReductionPerTier` | Double | `0.001` | 0.0 ~ 1.0 | Pure universal non-enchantment damage reduction gained per buff tier (0.001 = +0.1%). Reduces ALL damage unconditionally (including void, chaos damage, sonic boom, abyssal curse, lasers, true damage). |
 | `maxLegendDamageReduction` | Double | `0.80` | 0.0 ~ 1.0 | Maximum damage reduction cap for unique legend damage reduction (0.80 = 80%). |
 | `onlyVisibleAdvancements` | Boolean | `true` | true / false | If `true`, only advancements with visible display icons are counted (filters out internal recipe unlocks, etc.). |
 | `showBuffMessage` | Boolean | `true` | true / false | Whether to display the notification message ("One step closer to becoming a legend.") when reaching a new buff tier. |
@@ -36,9 +36,9 @@ Location / 設定ファイル配置場所: `config/aiming_to_become_a_legend-ser
 | `damagePerTier` | 小数 (Double) | `0.3` | 0.0 ~ 1000.0 | 1段階ごとに上昇する攻撃力。 |
 | `armorPerTier` | 小数 (Double) | `0.5` | 0.0 ~ 1000.0 | 1段階ごとに上昇する防御力。 |
 | `armorToughnessPerTier` | 小数 (Double) | `0.5` | 0.0 ~ 1000.0 | 1段階ごとに上昇する防具強度。 |
-| `experienceMultiplierPerTier` | 小数 (Double) | `0.1` | 0.0 ~ 100.0 | 1段階ごとに上昇する獲得経験値倍率（0.1 = +10%）。 |
+| `experienceMultiplierPerTier` | 小数 (Double) | `0.1` | 0.0 ~ 100.0 | 1段階ごとに上昇する獲得経験値倍率（0.1 = +10%）。Apothic Attributes 導入時は公式の `attributeslib:experience_gained` 属性に直接連動。 |
 | `enchantDamageReductionPerTier` | 小数 (Double) | `0.01` | 0.0 ~ 1.0 | 1段階ごとに上昇する「エンチャント防御」扱いの全ダメージ軽減率（0.01 = +1%）。防具エンチャントと合算して最大80%上限。防具のみで80%上限に達している場合は無効。 |
-| `legendDamageReductionPerTier` | 小数 (Double) | `0.001` | 0.0 ~ 1.0 | 1段階ごとに上昇する独自全ダメージ軽減率（0.001 = +0.1%）。エンチャント防御と重複（乗算）軽減し、L2Hostilityのディスペルのようなエンチャント貫通攻撃も軽減可能。 |
+| `legendDamageReductionPerTier` | 小数 (Double) | `0.001` | 0.0 ~ 1.0 | 1段階ごとに上昇する純粋汎用全ダメージ軽減率（0.001 = +0.1%）。奈落・混沌ダメージ・音波・呪い・レーザー・trueダメージ等を含むあらゆるダメージを例外なく汎用ロジックで軽減。 |
 | `maxLegendDamageReduction` | 小数 (Double) | `0.80` | 0.0 ~ 1.0 | 独自全ダメージ軽減率の最大上限キャップ（0.80 = 80%）。 |
 | `onlyVisibleAdvancements` | 真偽値 (Boolean) | `true` | true / false | `true` の場合、進捗画面に表示される実績のみをカウント対象とします（内部レシピ解放などのカウント混入を防止）。 |
 | `showBuffMessage` | 真偽値 (Boolean) | `true` | true / false | 新しい段階に到達した際、「伝説へ一歩近づいた」という通知メッセージを表示するかどうか。 |

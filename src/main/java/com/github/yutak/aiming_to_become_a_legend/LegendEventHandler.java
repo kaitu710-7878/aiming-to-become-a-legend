@@ -20,6 +20,7 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.AdvancementEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -90,6 +91,12 @@ public class LegendEventHandler {
 
     @SubscribeEvent
     public static void onXpChange(PlayerXpEvent.XpChange event) {
+        // If Apothic Attributes is present, it handles experience amplification via attributeslib:experience_gained.
+        // Fallback to our event-based scaling only when Apothic Attributes is absent.
+        if (LegendData.isUsingApothicXp()) {
+            return;
+        }
+
         if (event.getEntity() instanceof ServerPlayer player) {
             int originalAmount = event.getAmount();
             if (originalAmount > 0) {
@@ -107,7 +114,12 @@ public class LegendEventHandler {
         }
     }
 
-    @SubscribeEvent
+    /**
+     * Universal damage reduction pipeline.
+     * Priority is set to LOW so all vanilla & modded armor/resistance/piercing calculations have taken effect,
+     * allowing pure universal reduction on the final incoming damage value without hardcoding any specific mod or damage type.
+     */
+    @SubscribeEvent(priority = EventPriority.LOW)
     public static void onLivingDamage(LivingDamageEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
@@ -120,6 +132,7 @@ public class LegendEventHandler {
         }
 
         // 1. Enchantment-like damage reduction (+1% per tier, capped at 80% total with armor, ineffective if armor already hits the cap)
+        // Respects vanilla enchantment bypasses.
         if (!source.is(DamageTypeTags.BYPASSES_ENCHANTMENTS)) {
             int epf = EnchantmentHelper.getDamageProtection(player.getArmorSlots(), source);
             float armorProtFraction = Math.min(20, epf) / 25.0F; // vanilla enchantment protection: 0.0 to 0.80
@@ -136,13 +149,13 @@ public class LegendEventHandler {
             }
         }
 
-        // 2. Unique non-enchantment damage reduction (+0.1% per tier, stacks with enchantment reduction, reduces enchantment-piercing attacks like L2Hostility Dispel, capped at 80%)
-        if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-            AttributeInstance legendAttr = player.getAttribute(ModAttributes.LEGEND_DAMAGE_REDUCTION.get());
-            if (legendAttr != null && legendAttr.getValue() > 0.0) {
-                float legendReduction = (float) Math.min(Config.SERVER.maxLegendDamageReduction.get(), legendAttr.getValue());
-                damage *= (1.0F - legendReduction);
-            }
+        // 2. Pure Universal Non-Enchantment Damage Reduction (+0.1% per tier, capped at 80%)
+        // Applies to ALL damage sources unconditionally (including void, chaos damage, sonic boom, abyssal curse, lasers, true damage).
+        // No ad-hoc workarounds or hardcoded damage types: purely universal.
+        AttributeInstance legendAttr = player.getAttribute(ModAttributes.LEGEND_DAMAGE_REDUCTION.get());
+        if (legendAttr != null && legendAttr.getValue() > 0.0) {
+            float legendReduction = (float) Math.min(Config.SERVER.maxLegendDamageReduction.get(), legendAttr.getValue());
+            damage *= (1.0F - legendReduction);
         }
 
         event.setAmount(damage);

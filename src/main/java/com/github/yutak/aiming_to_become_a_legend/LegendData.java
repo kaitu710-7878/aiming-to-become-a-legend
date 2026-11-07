@@ -11,6 +11,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -31,6 +32,20 @@ public class LegendData {
     public static final UUID EXPERIENCE_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a905");
     public static final UUID ENCHANT_REDUCTION_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a906");
     public static final UUID LEGEND_REDUCTION_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a907");
+
+    private static final ResourceLocation APOTHIC_XP_ATTR_ID = new ResourceLocation("attributeslib", "experience_gained");
+
+    public static Attribute getExperienceAttribute() {
+        Attribute apothicAttr = ForgeRegistries.ATTRIBUTES.getValue(APOTHIC_XP_ATTR_ID);
+        if (apothicAttr != null) {
+            return apothicAttr;
+        }
+        return ModAttributes.EXPERIENCE_MULTIPLIER.get();
+    }
+
+    public static boolean isUsingApothicXp() {
+        return ForgeRegistries.ATTRIBUTES.getValue(APOTHIC_XP_ATTR_ID) != null;
+    }
 
     public static CompoundTag getModData(ServerPlayer player) {
         CompoundTag persistent = player.getPersistentData();
@@ -152,7 +167,13 @@ public class LegendData {
         applyModifier(player, Attributes.ATTACK_DAMAGE, DAMAGE_MODIFIER_UUID, "Legend Attack Damage", totalDamageBonus);
         applyModifier(player, Attributes.ARMOR, ARMOR_MODIFIER_UUID, "Legend Armor", totalArmorBonus);
         applyModifier(player, Attributes.ARMOR_TOUGHNESS, ARMOR_TOUGHNESS_MODIFIER_UUID, "Legend Armor Toughness", totalToughnessBonus);
-        applyModifier(player, ModAttributes.EXPERIENCE_MULTIPLIER.get(), EXPERIENCE_MODIFIER_UUID, "Legend XP Multiplier", totalXpMultiplier);
+
+        // Apply Experience Modifier to Apothic Attributes (or fallback custom attribute)
+        Attribute xpAttr = getExperienceAttribute();
+        if (xpAttr != null) {
+            applyModifier(player, xpAttr, EXPERIENCE_MODIFIER_UUID, "Legend XP Multiplier", totalXpMultiplier);
+        }
+
         applyModifier(player, ModAttributes.ENCHANT_DAMAGE_REDUCTION.get(), ENCHANT_REDUCTION_MODIFIER_UUID, "Legend Enchant Damage Reduction", totalEnchantReduction);
         applyModifier(player, ModAttributes.LEGEND_DAMAGE_REDUCTION.get(), LEGEND_REDUCTION_MODIFIER_UUID, "Legend Unique Damage Reduction", totalLegendReduction);
 
