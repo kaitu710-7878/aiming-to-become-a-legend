@@ -39,17 +39,24 @@ public class LegendCommand {
         double damageBonus = tier * Config.SERVER.damagePerTier.get();
         double armorBonus = tier * Config.SERVER.armorPerTier.get();
         double toughnessBonus = tier * Config.SERVER.armorToughnessPerTier.get();
+        double xpBonus = tier * Config.SERVER.experienceMultiplierPerTier.get() * 100.0;
+        double enchantReduction = Math.min(80.0, tier * Config.SERVER.enchantDamageReductionPerTier.get() * 100.0);
+        double legendReduction = Math.min(Config.SERVER.maxLegendDamageReduction.get() * 100.0, tier * Config.SERVER.legendDamageReductionPerTier.get() * 100.0);
 
         source.sendSuccess(() -> Component.translatable("commands.aiming_to_become_a_legend.status.header"), false);
         source.sendSuccess(() -> Component.translatable("commands.aiming_to_become_a_legend.status.tier", tier, total), false);
         source.sendSuccess(() -> Component.translatable("commands.aiming_to_become_a_legend.status.advancements", advancements), false);
         source.sendSuccess(() -> Component.translatable("commands.aiming_to_become_a_legend.status.mobs", mobs), false);
         source.sendSuccess(() -> Component.translatable("commands.aiming_to_become_a_legend.status.items", items), false);
-        source.sendSuccess(() -> Component.translatable("commands.aiming_to_become_a_legend.status.buffs",
+        source.sendSuccess(() -> Component.translatable("commands.aiming_to_become_a_legend.status.buffs_1",
                 String.format("%.1f", healthBonus),
                 String.format("%.2f", damageBonus),
                 String.format("%.1f", armorBonus),
                 String.format("%.1f", toughnessBonus)), false);
+        source.sendSuccess(() -> Component.translatable("commands.aiming_to_become_a_legend.status.buffs_2",
+                String.format("%.1f%%", xpBonus),
+                String.format("%.1f%%", enchantReduction),
+                String.format("%.2f%%", legendReduction)), false);
 
         return 1;
     }

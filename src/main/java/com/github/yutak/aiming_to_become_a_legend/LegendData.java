@@ -28,6 +28,9 @@ public class LegendData {
     public static final UUID DAMAGE_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a902");
     public static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a903");
     public static final UUID ARMOR_TOUGHNESS_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a904");
+    public static final UUID EXPERIENCE_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a905");
+    public static final UUID ENCHANT_REDUCTION_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a906");
+    public static final UUID LEGEND_REDUCTION_MODIFIER_UUID = UUID.fromString("b3e2b291-72da-4b8c-b9b5-68045607a907");
 
     public static CompoundTag getModData(ServerPlayer player) {
         CompoundTag persistent = player.getPersistentData();
@@ -132,17 +135,26 @@ public class LegendData {
         double damagePerTier = Config.SERVER.damagePerTier.get();
         double armorPerTier = Config.SERVER.armorPerTier.get();
         double toughnessPerTier = Config.SERVER.armorToughnessPerTier.get();
+        double xpMultiplierPerTier = Config.SERVER.experienceMultiplierPerTier.get();
+        double enchantReductionPerTier = Config.SERVER.enchantDamageReductionPerTier.get();
+        double legendReductionPerTier = Config.SERVER.legendDamageReductionPerTier.get();
 
         double totalHealthBonus = targetTier * healthPerTier;
         double totalDamageBonus = targetTier * damagePerTier;
         double totalArmorBonus = targetTier * armorPerTier;
         double totalToughnessBonus = targetTier * toughnessPerTier;
+        double totalXpMultiplier = targetTier * xpMultiplierPerTier;
+        double totalEnchantReduction = Math.min(0.80, targetTier * enchantReductionPerTier);
+        double totalLegendReduction = Math.min(Config.SERVER.maxLegendDamageReduction.get(), targetTier * legendReductionPerTier);
 
         // Apply attribute modifiers
         applyModifier(player, Attributes.MAX_HEALTH, HEALTH_MODIFIER_UUID, "Legend Max Health", totalHealthBonus);
         applyModifier(player, Attributes.ATTACK_DAMAGE, DAMAGE_MODIFIER_UUID, "Legend Attack Damage", totalDamageBonus);
         applyModifier(player, Attributes.ARMOR, ARMOR_MODIFIER_UUID, "Legend Armor", totalArmorBonus);
         applyModifier(player, Attributes.ARMOR_TOUGHNESS, ARMOR_TOUGHNESS_MODIFIER_UUID, "Legend Armor Toughness", totalToughnessBonus);
+        applyModifier(player, ModAttributes.EXPERIENCE_MULTIPLIER.get(), EXPERIENCE_MODIFIER_UUID, "Legend XP Multiplier", totalXpMultiplier);
+        applyModifier(player, ModAttributes.ENCHANT_DAMAGE_REDUCTION.get(), ENCHANT_REDUCTION_MODIFIER_UUID, "Legend Enchant Damage Reduction", totalEnchantReduction);
+        applyModifier(player, ModAttributes.LEGEND_DAMAGE_REDUCTION.get(), LEGEND_REDUCTION_MODIFIER_UUID, "Legend Unique Damage Reduction", totalLegendReduction);
 
         // If tier increased
         if (targetTier > currentTier) {

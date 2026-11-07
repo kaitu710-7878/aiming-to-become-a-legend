@@ -5,15 +5,21 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.AdvancementEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -80,6 +86,66 @@ public class LegendEventHandler {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onXpChange(PlayerXpEvent.XpChange event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            int originalAmount = event.getAmount();
+            if (originalAmount > 0) {
+                AttributeInstance xpAttr = player.getAttribute(ModAttributes.EXPERIENCE_MULTIPLIER.get());
+                if (xpAttr != null && xpAttr.getValue() > 0.0) {
+                    double mult = xpAttr.getValue();
+                    double bonus = originalAmount * mult;
+                    int intBonus = (int) bonus;
+                    if (player.getRandom().nextDouble() < (bonus - intBonus)) {
+                        intBonus++;
+                    }
+                    event.setAmount(originalAmount + intBonus);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingDamage(LivingDamageEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+
+        DamageSource source = event.getSource();
+        float damage = event.getAmount();
+        if (damage <= 0.0F) {
+            return;
+        }
+
+        // 1. Enchantment-like damage reduction (+1% per tier, capped at 80% total with armor, ineffective if armor already hits the cap)
+        if (!source.is(DamageTypeTags.BYPASSES_ENCHANTMENTS)) {
+            int epf = EnchantmentHelper.getDamageProtection(player.getArmorSlots(), source);
+            float armorProtFraction = Math.min(20, epf) / 25.0F; // vanilla enchantment protection: 0.0 to 0.80
+
+            if (armorProtFraction < 0.80F) {
+                AttributeInstance enchantAttr = player.getAttribute(ModAttributes.ENCHANT_DAMAGE_REDUCTION.get());
+                if (enchantAttr != null && enchantAttr.getValue() > 0.0) {
+                    float totalProt = (float) Math.min(0.80, armorProtFraction + enchantAttr.getValue());
+                    if (totalProt > armorProtFraction) {
+                        float factor = (1.0F - totalProt) / (1.0F - armorProtFraction);
+                        damage *= factor;
+                    }
+                }
+            }
+        }
+
+        // 2. Unique non-enchantment damage reduction (+0.1% per tier, stacks with enchantment reduction, reduces enchantment-piercing attacks like L2Hostility Dispel, capped at 80%)
+        if (!source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+            AttributeInstance legendAttr = player.getAttribute(ModAttributes.LEGEND_DAMAGE_REDUCTION.get());
+            if (legendAttr != null && legendAttr.getValue() > 0.0) {
+                float legendReduction = (float) Math.min(Config.SERVER.maxLegendDamageReduction.get(), legendAttr.getValue());
+                damage *= (1.0F - legendReduction);
+            }
+        }
+
+        event.setAmount(damage);
     }
 
     @SubscribeEvent

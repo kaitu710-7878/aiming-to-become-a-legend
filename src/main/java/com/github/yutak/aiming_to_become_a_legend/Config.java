@@ -12,6 +12,10 @@ public class Config {
     public final ForgeConfigSpec.DoubleValue damagePerTier;
     public final ForgeConfigSpec.DoubleValue armorPerTier;
     public final ForgeConfigSpec.DoubleValue armorToughnessPerTier;
+    public final ForgeConfigSpec.DoubleValue experienceMultiplierPerTier;
+    public final ForgeConfigSpec.DoubleValue enchantDamageReductionPerTier;
+    public final ForgeConfigSpec.DoubleValue legendDamageReductionPerTier;
+    public final ForgeConfigSpec.DoubleValue maxLegendDamageReduction;
     public final ForgeConfigSpec.BooleanValue onlyVisibleAdvancements;
     public final ForgeConfigSpec.BooleanValue showBuffMessage;
     public final ForgeConfigSpec.BooleanValue detailedBuffMessage;
@@ -55,6 +59,26 @@ public class Config {
                 .comment("Armor Toughness points gained per buff tier.")
                 .translation("aiming_to_become_a_legend.config.armorToughnessPerTier")
                 .defineInRange("armorToughnessPerTier", 0.5, 0.0, 1000.0);
+
+        experienceMultiplierPerTier = builder
+                .comment("Experience multiplier gained per buff tier (0.1 = +10%).")
+                .translation("aiming_to_become_a_legend.config.experienceMultiplierPerTier")
+                .defineInRange("experienceMultiplierPerTier", 0.1, 0.0, 100.0);
+
+        enchantDamageReductionPerTier = builder
+                .comment("Enchantment-like damage reduction gained per buff tier (0.01 = +1%). Capped at 80% total with armor enchantments, and ineffective if armor already hits the cap.")
+                .translation("aiming_to_become_a_legend.config.enchantDamageReductionPerTier")
+                .defineInRange("enchantDamageReductionPerTier", 0.01, 0.0, 1.0);
+
+        legendDamageReductionPerTier = builder
+                .comment("Unique non-enchantment damage reduction gained per buff tier (0.001 = +0.1%). Stacks with enchantment reduction and reduces enchantment-piercing attacks (e.g. L2Hostility Dispel).")
+                .translation("aiming_to_become_a_legend.config.legendDamageReductionPerTier")
+                .defineInRange("legendDamageReductionPerTier", 0.001, 0.0, 1.0);
+
+        maxLegendDamageReduction = builder
+                .comment("Maximum damage reduction limit for the unique legend damage reduction attribute (0.80 = 80%).")
+                .translation("aiming_to_become_a_legend.config.maxLegendDamageReduction")
+                .defineInRange("maxLegendDamageReduction", 0.80, 0.0, 1.0);
 
         onlyVisibleAdvancements = builder
                 .comment("Whether to count only advancements that have display info (ignoring internal recipe unlocks, etc.).")

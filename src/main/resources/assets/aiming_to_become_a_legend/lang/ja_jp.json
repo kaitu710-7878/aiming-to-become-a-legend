@@ -1,4 +1,7 @@
 {
+  "attribute.name.aiming_to_become_a_legend.experience_multiplier": "獲得経験値倍率",
+  "attribute.name.aiming_to_become_a_legend.enchant_damage_reduction": "エンチャント全ダメージ軽減率",
+  "attribute.name.aiming_to_become_a_legend.legend_damage_reduction": "独自全ダメージ軽減率",
   "message.aiming_to_become_a_legend.buff_received": "伝説へ一歩近づいた",
   "message.aiming_to_become_a_legend.buff_received_detailed": "伝説へ一歩近づいた (段階 %s: 実績 %s, 討伐モブ %s, 摂食アイテム %s)",
   "commands.aiming_to_become_a_legend.status.header": "§6=== 伝説への道 進行状況 ===",
@@ -6,5 +9,6 @@
   "commands.aiming_to_become_a_legend.status.advancements": "§7- 実績解除数: §a%s",
   "commands.aiming_to_become_a_legend.status.mobs": "§7- 討伐モブ種類数: §a%s",
   "commands.aiming_to_become_a_legend.status.items": "§7- 摂食アイテム種類数: §a%s",
-  "commands.aiming_to_become_a_legend.status.buffs": "§e現在のバフ: §c最大体力 +%s§7, §4攻撃力 +%s§7, §9防御力 +%s§7, §3防具強度 +%s"
+  "commands.aiming_to_become_a_legend.status.buffs_1": "§e基本能力: §c最大体力 +%s§7, §4攻撃力 +%s§7, §9防御力 +%s§7, §3防具強度 +%s",
+  "commands.aiming_to_become_a_legend.status.buffs_2": "§e特殊能力: §a経験値 +%s§7, §bエンチャント軽減 +%s§7, §d独自軽減 +%s"
 }

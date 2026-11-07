@@ -26,12 +26,15 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
   - **Attack Damage:** `+0.3`
   - **Armor:** `+0.5`
   - **Armor Toughness:** `+0.5`
+  - **Experience Multiplier:** `+0.1` (+10%)
+  - **Enchantment-like Damage Reduction:** `+1.0%` (capped at 80% total with armor enchantments, ineffective if armor already hits the cap)
+  - **Unique Non-Enchantment Damage Reduction:** `+0.1%` (stacks multiplicatively with enchantment reduction, reduces enchantment-piercing attacks like L2Hostility Dispel, capped at 80%)
 
 - **Unlimited Ceiling (No Upper Limit):**  
-  There is no cap. The more you explore and conquer, the stronger you become.
+  There is no cap on milestones and base tiers. The more you explore and conquer, the stronger you become.
 
 - **High-Performance & Event-Driven:**  
-  Zero per-tick calculations. Data is updated strictly when advancements are earned, mobs are slain, or food is consumed.
+  Zero per-tick calculations. Data is updated strictly when advancements are earned, mobs are slain, food is consumed, or damage/XP events occur.
 
 - **Legend Notification:**  
   Whenever your tier increases, a message logs: *"One step closer to becoming a legend."*
@@ -43,7 +46,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
 
 ### Installation
 1. Install [Minecraft Forge](https://files.minecraftforge.net/) for 1.20.1 (recommended 47.3.0 or higher).
-2. Download the latest jar file `aiming_to_become_a_legend-1.0.0-alpha.jar` from the release build.
+2. Download the latest jar file `aiming_to_become_a_legend-1.1.0-alpha.jar` from the release build.
 3. Place the jar file into your `.minecraft/mods` folder.
 4. Launch the game and embark on your legendary journey!
 
@@ -67,9 +70,12 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
   - **攻撃力 (Attack Damage):** `+0.3`
   - **防御力 (Armor):** `+0.5`
   - **防具強度 (Armor Toughness):** `+0.5`
+  - **獲得経験値倍率 (XP Multiplier):** `+0.1` (+10%)
+  - **「エンチャント防御」扱いの全ダメージ軽減率:** `+1.0%` (防具エンチャントと合算して最大80%上限、防具だけで到達している場合は無効)
+  - **非エンチャント扱いの独自全ダメージ軽減率:** `+0.1%` (エンチャント防御と重複乗算軽減、L2Hostilityのディスペル等のエンチャント貫通攻撃も軽減可能、最大80%上限)
 
 - **青天井の成長上限:**  
-  ステータス上限は一切ありません。世界中を探索し尽くすほど強大な存在へと近づきます。
+  合算値および段階（Tier）に上限はありません。世界中を探索し尽くすほど強大な存在へと近づきます。
 
 - **超高パフォーマンス設計 (イベント駆動):**  
   毎tickの重い走査や計算は一切行いません。実績解除時・モブ討伐時・アイテム摂食時のみ差分を判定・加算するため、サーバー負荷は極小です。
@@ -84,7 +90,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
 
 ### 導入方法
 1. Minecraft 1.20.1 用の [Minecraft Forge](https://files.minecraftforge.net/) (47.3.0以上推奨) をインストールします。
-2. ビルドされた `aiming_to_become_a_legend-1.0.0-alpha.jar` をダウンロードします。
+2. ビルドされた `aiming_to_become_a_legend-1.1.0-alpha.jar` をダウンロードします。
 3. `.minecraft/mods` ディレクトリに本JARファイルを配置します。
 4. ゲームを起動して伝説への道を歩み始めましょう！
 

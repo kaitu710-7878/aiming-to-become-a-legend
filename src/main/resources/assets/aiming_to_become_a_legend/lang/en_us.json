@@ -1,4 +1,7 @@
 {
+  "attribute.name.aiming_to_become_a_legend.experience_multiplier": "Experience Multiplier",
+  "attribute.name.aiming_to_become_a_legend.enchant_damage_reduction": "Enchantment Damage Reduction",
+  "attribute.name.aiming_to_become_a_legend.legend_damage_reduction": "Legend Damage Reduction",
   "message.aiming_to_become_a_legend.buff_received": "One step closer to becoming a legend.",
   "message.aiming_to_become_a_legend.buff_received_detailed": "One step closer to becoming a legend. (Tier %s: Advancements %s, Mobs %s, Foods %s)",
   "commands.aiming_to_become_a_legend.status.header": "§6=== Path to Legend Progress ===",
@@ -6,5 +9,6 @@
   "commands.aiming_to_become_a_legend.status.advancements": "§7- Advancements Completed: §a%s",
   "commands.aiming_to_become_a_legend.status.mobs": "§7- Mob Types Killed: §a%s",
   "commands.aiming_to_become_a_legend.status.items": "§7- Food Types Eaten: §a%s",
-  "commands.aiming_to_become_a_legend.status.buffs": "§eCurrent Buffs: §cMax HP +%s§7, §4Attack +%s§7, §9Armor +%s§7, §3Toughness +%s"
+  "commands.aiming_to_become_a_legend.status.buffs_1": "§eAttributes: §cMax HP +%s§7, §4Attack +%s§7, §9Armor +%s§7, §3Toughness +%s",
+  "commands.aiming_to_become_a_legend.status.buffs_2": "§eSpecial Buffs: §aXP +%s§7, §bEnchant Protection +%s§7, §dLegend Protection +%s"
 }

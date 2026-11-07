@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.1.0-alpha] - 2026-11-07
+
+### Added / 追加
+- **EN:** Added new Attribute buffs per tier:
+  - **Experience Multiplier (+0.1 / +10% per tier):** Applied to all gained experience points.
+  - **Enchantment-like Damage Reduction (+1.0% per tier):** Handled as enchantment protection. Ineffective if armor enchantments alone reach the 80% vanilla enchantment reduction cap, and cannot exceed 80% total enchantment reduction.
+  - **Unique Non-Enchantment Damage Reduction (+0.1% per tier):** Stacks multiplicatively with enchantment protection, reduces damage types that pierce enchantments (e.g. L2Hostility Dispel), capped at 80% reduction.
+  - Registered 3 new custom attributes and integrated them into `/legend status`.
+- **JA:** 新たな属性（Attribute）バフを追加：
+  - **獲得経験値倍率 (+0.1 / +10% / Tier):** 獲得するすべての経験値に乗算適用。
+  - **「エンチャント防御」扱いの全ダメージ軽減率 (+1.0% / Tier):** エンチャントによる最大ダメージ軽減率（80%）を突破せず、防具エンチャントのみで上限に達している場合は効果を発揮しない安全設計。
+  - **非エンチャント扱いの独自全ダメージ軽減率 (+0.1% / Tier):** エンチャント防御と重複（乗算）して軽減。L2Hostilityのディスペルのようなエンチャント貫通攻撃も軽減可能。独自属性上限キャップ80%。
+  - 3種類のカスタム属性を登録し、`/legend status` コマンドで確認可能に対応。
+
+---
+
 ## [1.0.0-alpha] - 2026-11-07
 
 ### Added / 追加
