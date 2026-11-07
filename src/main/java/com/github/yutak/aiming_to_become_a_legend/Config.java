@@ -17,6 +17,7 @@ public class Config {
     public final ForgeConfigSpec.DoubleValue legendDamageReductionPerTier;
     public final ForgeConfigSpec.DoubleValue maxLegendDamageReduction;
     public final ForgeConfigSpec.BooleanValue onlyVisibleAdvancements;
+    public final ForgeConfigSpec.BooleanValue ignoreRootAdvancements;
     public final ForgeConfigSpec.BooleanValue showBuffMessage;
     public final ForgeConfigSpec.BooleanValue detailedBuffMessage;
     public final ForgeConfigSpec.EnumValue<MessagePosition> messagePosition;
@@ -41,9 +42,9 @@ public class Config {
                 .defineInRange("milestoneStep", 5, 1, 1000);
 
         healthPerTier = builder
-                .comment("Max Health gained per buff tier (3.0 = 1.5 hearts).")
+                .comment("Max Health gained per buff tier (1.0 = 0.5 hearts).")
                 .translation("aiming_to_become_a_legend.config.healthPerTier")
-                .defineInRange("healthPerTier", 3.0, 0.0, 1000.0);
+                .defineInRange("healthPerTier", 1.0, 0.0, 1000.0);
 
         damagePerTier = builder
                 .comment("Attack Damage gained per buff tier.")
@@ -84,6 +85,11 @@ public class Config {
                 .comment("Whether to count only advancements that have display info (ignoring internal recipe unlocks, etc.).")
                 .translation("aiming_to_become_a_legend.config.onlyVisibleAdvancements")
                 .define("onlyVisibleAdvancements", true);
+
+        ignoreRootAdvancements = builder
+                .comment("Whether to ignore root/parent category advancements (e.g. initial tab icons like 'Nether', 'Story', etc.).")
+                .translation("aiming_to_become_a_legend.config.ignoreRootAdvancements")
+                .define("ignoreRootAdvancements", true);
 
         showBuffMessage = builder
                 .comment("Whether to show the notification message when reaching a new buff tier.")

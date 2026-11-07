@@ -28,6 +28,16 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod.EventBusSubscriber(modid = AimingToBecomeALegend.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class LegendEventHandler {
 
+    public static boolean isValidAdvancement(Advancement advancement) {
+        if (Config.SERVER.onlyVisibleAdvancements.get() && advancement.getDisplay() == null) {
+            return false;
+        }
+        if (Config.SERVER.ignoreRootAdvancements.get() && advancement.getParent() == null) {
+            return false;
+        }
+        return true;
+    }
+
     @SubscribeEvent
     public static void onAdvancementEarn(AdvancementEvent.AdvancementEarnEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
@@ -35,7 +45,7 @@ public class LegendEventHandler {
         }
 
         Advancement advancement = event.getAdvancement();
-        if (Config.SERVER.onlyVisibleAdvancements.get() && advancement.getDisplay() == null) {
+        if (!isValidAdvancement(advancement)) {
             return;
         }
 
@@ -169,9 +179,8 @@ public class LegendEventHandler {
 
         MinecraftServer server = player.getServer();
         if (server != null) {
-            boolean onlyVisible = Config.SERVER.onlyVisibleAdvancements.get();
             for (Advancement advancement : server.getAdvancements().getAllAdvancements()) {
-                if (onlyVisible && advancement.getDisplay() == null) {
+                if (!isValidAdvancement(advancement)) {
                     continue;
                 }
                 if (player.getAdvancements().getOrStartProgress(advancement).isDone()) {

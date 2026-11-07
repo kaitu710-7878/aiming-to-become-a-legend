@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.3.0-beta] - 2026-11-07
+
+### Changed / 変更
+- **EN:**
+  - Transitioned release channel to **Beta**.
+  - Adjusted Max Health bonus per tier from `3.0` to `1.0` (0.5 hearts per tier).
+  - Filtered out root/parent category advancements (`advancement.getParent() == null`) by default (`ignoreRootAdvancements = true`). Fixes the issue where arriving in the Nether counted both the category root and the entry advancement (2 points).
+- **JA:**
+  - リリース種別を **Beta版** へ移行。
+  - 1段階あたりの最大体力（HP）上昇量を `3.0` から `1.0`（ハート0.5個分）へ変更。
+  - デフォルトで解放される各進捗タブの起点となる親実績（ルート進捗: `advancement.getParent() == null`）をカウント対象外とする仕様を追加（`ignoreRootAdvancements = true`）。ネザー初回到達時に親実績と到達実績の2重獲得となってしまう問題を解消。
+
+---
+
 ## [1.2.0-alpha] - 2026-11-07
 
 ### Added / 追加
@@ -24,14 +38,8 @@ All notable changes to this project will be documented in this file.
 ## [1.1.0-alpha] - 2026-11-07
 
 ### Added / 追加
-- **EN:** Added new Attribute buffs per tier:
-  - Experience Multiplier (+0.1 / +10% per tier).
-  - Enchantment-like Damage Reduction (+1.0% per tier, capped at 80% total with armor enchantments).
-  - Unique Non-Enchantment Damage Reduction (+0.1% per tier, capped at 80%).
-- **JA:** 新たな属性（Attribute）バフを追加：
-  - 獲得経験値倍率 (+0.1 / +10% / Tier)。
-  - 「エンチャント防御」扱いの全ダメージ軽減率 (+1.0% / Tier、防具と合算して最大80%)。
-  - 非エンチャント扱いの独自全ダメージ軽減率 (+0.1% / Tier、最大80%)。
+- **EN:** Added new Attribute buffs per tier (XP multiplier, enchant-like damage reduction, unique damage reduction).
+- **JA:** 新たな属性バフを追加（経験値倍率、エンチャント軽減率、独自全ダメージ軽減率）。
 
 ---
 
