@@ -23,7 +23,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
   3. Unique Food / Consumable Items Eaten
   
   You permanently gain:
-  - **Max Health:** `+1.0` (+0.5 hearts)
+  - **Max Health:** `+2.0` (+1 heart)
   - **Attack Damage:** `+0.3`
   - **Armor:** `+0.5`
   - **Armor Toughness:** `+0.5`
@@ -47,7 +47,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
 
 ### Installation
 1. Install [Minecraft Forge](https://files.minecraftforge.net/) for 1.20.1 (recommended 47.3.0 or higher).
-2. Download the latest jar file `aiming_to_become_a_legend-1.3.0-beta.jar` from the release build.
+2. Download the latest jar file `aiming_to_become_a_legend-1.3.1-beta.jar` from the release build.
 3. Place the jar file into your `.minecraft/mods` folder.
 4. Launch the game and embark on your legendary journey!
 
@@ -67,7 +67,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
   3. 食べたアイテムの種類数（ユニークな食品アイテム種別）
   
   **1段階（Tier）ごとの上昇値:**
-  - **最大体力 (Max HP):** `+1.0`（ハート0.5個分）
+  - **最大体力 (Max HP):** `+2.0`（ハート1個分）
   - **攻撃力 (Attack Damage):** `+0.3`
   - **防御力 (Armor):** `+0.5`
   - **防具強度 (Armor Toughness):** `+0.5`
@@ -91,7 +91,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
 
 ### 導入方法
 1. Minecraft 1.20.1 用の [Minecraft Forge](https://files.minecraftforge.net/) (47.3.0以上推奨) をインストールします。
-2. ビルドされた `aiming_to_become_a_legend-1.3.0-beta.jar` をダウンロードします。
+2. ビルドされた `aiming_to_become_a_legend-1.3.1-beta.jar` をダウンロードします。
 3. `.minecraft/mods` ディレクトリに本JARファイルを配置します。
 4. ゲームを起動して伝説への道を歩み始めましょう！
 

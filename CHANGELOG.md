@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [1.3.1-beta] - 2026-11-07
+
+### Changed / 変更
+- **EN:** Adjusted Max Health bonus per tier from `1.0` to `2.0` (1 full heart per tier).
+- **JA:** 1段階あたりの最大体力（HP）上昇量を `1.0` から `2.0`（ハート1個分）へ変更。
+
+---
+
 ## [1.3.0-beta] - 2026-11-07
 
 ### Changed / 変更

@@ -42,9 +42,9 @@ public class Config {
                 .defineInRange("milestoneStep", 5, 1, 1000);
 
         healthPerTier = builder
-                .comment("Max Health gained per buff tier (1.0 = 0.5 hearts).")
+                .comment("Max Health gained per buff tier (2.0 = 1 heart).")
                 .translation("aiming_to_become_a_legend.config.healthPerTier")
-                .defineInRange("healthPerTier", 1.0, 0.0, 1000.0);
+                .defineInRange("healthPerTier", 2.0, 0.0, 1000.0);
 
         damagePerTier = builder
                 .comment("Attack Damage gained per buff tier.")
