@@ -18,7 +18,7 @@ Location / 設定ファイル配置場所: `config/aiming_to_become_a_legend-ser
 | `armorToughnessPerTier` | Double | `0.5` | 0.0 ~ 1000.0 | Armor toughness points gained per buff tier. |
 | `experienceMultiplierPerTier` | Double | `0.1` | 0.0 ~ 100.0 | Experience multiplier gained per buff tier (0.1 = +10%). Directly modifies Apothic Attributes' `attributeslib:experience_gained` when present. |
 | `enchantDamageReductionPerTier` | Double | `0.01` | 0.0 ~ 1.0 | Enchantment-like damage reduction gained per buff tier (0.01 = +1%). Capped at 80% total with armor enchantments, and ineffective if armor already hits the cap. |
-| `legendDamageReductionPerTier` | Double | `0.001` | 0.0 ~ 1.0 | Pure universal non-enchantment damage reduction gained per buff tier (0.001 = +0.1%). Reduces ALL damage unconditionally (including void, chaos damage, sonic boom, abyssal curse, lasers, true damage). |
+| `legendDamageReductionPerTier` | Double | `0.001` | 0.0 ~ 1.0 | Pure universal non-enchantment damage reduction gained per buff tier (0.001 = +0.1%). Unconditionally mitigates all damage types (including armor-piercing and enchantment-piercing damage). |
 | `maxLegendDamageReduction` | Double | `0.80` | 0.0 ~ 1.0 | Maximum damage reduction cap for unique legend damage reduction (0.80 = 80%). |
 | `onlyVisibleAdvancements` | Boolean | `true` | true / false | If `true`, only advancements with visible display icons are counted (filters out internal recipe unlocks, etc.). |
 | `ignoreRootAdvancements` | Boolean | `true` | true / false | If `true`, ignores root/parent category advancements (e.g. initial tab icons like 'Nether', 'Story', etc.) to prevent double-counting upon reaching new dimensions. |
@@ -40,7 +40,7 @@ Location / 設定ファイル配置場所: `config/aiming_to_become_a_legend-ser
 | `armorToughnessPerTier` | 小数 (Double) | `0.5` | 0.0 ~ 1000.0 | 1段階ごとに上昇する防具強度。 |
 | `experienceMultiplierPerTier` | 小数 (Double) | `0.1` | 0.0 ~ 100.0 | 1段階ごとに上昇する獲得経験値倍率（0.1 = +10%）。Apothic Attributes 導入時は公式の `attributeslib:experience_gained` 属性に直接連動。 |
 | `enchantDamageReductionPerTier` | 小数 (Double) | `0.01` | 0.0 ~ 1.0 | 1段階ごとに上昇する「エンチャント防御」扱いの全ダメージ軽減率（0.01 = +1%）。防具エンチャントと合算して最大80%上限。防具のみで80%上限に達している場合は無効。 |
-| `legendDamageReductionPerTier` | 小数 (Double) | `0.001` | 0.0 ~ 1.0 | 1段階ごとに上昇する純粋汎用全ダメージ軽減率（0.001 = +0.1%）。奈落・混沌ダメージ・音波・呪い・レーザー・trueダメージ等を含むあらゆるダメージを例外なく汎用ロジックで軽減。 |
+| `legendDamageReductionPerTier` | 小数 (Double) | `0.001` | 0.0 ~ 1.0 | 1段階ごとに上昇する純粋汎用全ダメージ軽減率（0.001 = +0.1%）。貫通ダメージを含むあらゆるダメージを無条件に汎用ロジックで軽減。 |
 | `maxLegendDamageReduction` | 小数 (Double) | `0.80` | 0.0 ~ 1.0 | 独自全ダメージ軽減率の最大上限キャップ（0.80 = 80%）。 |
 | `onlyVisibleAdvancements` | 真偽値 (Boolean) | `true` | true / false | `true` の場合、進捗画面に表示される実績のみをカウント対象とします（内部レシピ解放などのカウント混入を防止）。 |
 | `ignoreRootAdvancements` | 真偽値 (Boolean) | `true` | true / false | `true` の場合、タブの起点となる親実績（「ネザー」「冒険」「農業」などの初期項目）をカウントから除外します（ネザー到達時に親項目と到達実績の2重カウントが発生する問題を防止）。 |

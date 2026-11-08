@@ -73,7 +73,7 @@ public class Config {
                 .defineInRange("enchantDamageReductionPerTier", 0.01, 0.0, 1.0);
 
         legendDamageReductionPerTier = builder
-                .comment("Unique non-enchantment damage reduction gained per buff tier (0.001 = +0.1%). Stacks with enchantment reduction and reduces enchantment-piercing attacks (e.g. L2Hostility Dispel).")
+                .comment("Unique non-enchantment damage reduction gained per buff tier (0.001 = +0.1%). Stacks with enchantment reduction and reduces damage unconditionally (including armor-piercing and enchantment-piercing attacks).")
                 .translation("aiming_to_become_a_legend.config.legendDamageReductionPerTier")
                 .defineInRange("legendDamageReductionPerTier", 0.001, 0.0, 1.0);
 

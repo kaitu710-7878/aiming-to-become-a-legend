@@ -160,7 +160,7 @@ public class LegendEventHandler {
         }
 
         // 2. Pure Universal Non-Enchantment Damage Reduction (+0.1% per tier, capped at 80%)
-        // Applies to ALL damage sources unconditionally (including void, chaos damage, sonic boom, abyssal curse, lasers, true damage).
+        // Applies to ALL damage sources unconditionally (including armor-piercing and enchantment-piercing damage).
         // No ad-hoc workarounds or hardcoded damage types: purely universal.
         AttributeInstance legendAttr = player.getAttribute(ModAttributes.LEGEND_DAMAGE_REDUCTION.get());
         if (legendAttr != null && legendAttr.getValue() > 0.0) {

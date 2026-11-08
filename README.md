@@ -29,7 +29,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
   - **Armor Toughness:** `+0.5`
   - **Experience Multiplier:** `+0.1` (+10%, directly integrates with Apothic Attributes `attributeslib:experience_gained`)
   - **Enchantment-like Damage Reduction:** `+1.0%` (capped at 80% total with armor enchantments, ineffective if armor already hits the cap)
-  - **Pure Universal Damage Reduction:** `+0.1%` (stacks multiplicatively with enchantment reduction; mitigates ALL damage types including void, Draconic Evolution chaos damage, Cataclysm lasers & curse, Warden sonic boom, and Iron's Spells true/eldritch damage via universal algorithmic reduction; capped at 80%)
+  - **Pure Universal Damage Reduction:** `+0.1%` (stacks multiplicatively with enchantment reduction; mitigates all damage types including armor-piercing and enchantment-piercing damage via pure universal reduction; capped at 80%)
 
 - **Unlimited Ceiling (No Upper Limit):**  
   There is no cap on milestones and base tiers. The more you explore and conquer, the stronger you become.
@@ -74,7 +74,7 @@ Every action in your adventure—completing advancements, hunting diverse mobs, 
   - **防具強度 (Armor Toughness):** `+0.5`
   - **獲得経験値倍率 (XP Multiplier):** `+0.1` (+10%, Apothic Attributesの `attributeslib:experience_gained` と直接連動)
   - **「エンチャント防御」扱いの全ダメージ軽減率:** `+1.0%` (防具エンチャントと合算して最大80%上限、防具だけで到達している場合は無効)
-  - **純粋汎用全ダメージ軽減率:** `+0.1%` (エンチャント防御と重複乗算軽減。奈落、ドラコニックエヴォリューションの混沌ダメージ、カタクリズムのレーザー/呪い、ウォーデンの音波、ISSのtrue/エルドリッチダメージ等あらゆるダメージを完全汎用ロジックで軽減、最大80%上限)
+  - **純粋汎用全ダメージ軽減率:** `+0.1%` (エンチャント防御と重複乗算軽減。貫通ダメージを含むあらゆるダメージを完全汎用ロジックで無条件に軽減、最大80%上限)
 
 - **青天井の成長上限:**  
   合算値および段階（Tier）に上限はありません。世界中を探索し尽くすほど強大な存在へと近づきます。
