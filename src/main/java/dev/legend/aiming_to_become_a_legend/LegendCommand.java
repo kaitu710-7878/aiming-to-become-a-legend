@@ -1,4 +1,4 @@
-package com.github.yutak.aiming_to_become_a_legend;
+package dev.legend.aiming_to_become_a_legend;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;

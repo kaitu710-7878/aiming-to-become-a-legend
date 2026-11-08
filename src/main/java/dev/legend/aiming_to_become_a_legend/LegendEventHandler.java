@@ -1,4 +1,4 @@
-package com.github.yutak.aiming_to_become_a_legend;
+package dev.legend.aiming_to_become_a_legend;
 
 import net.minecraft.advancements.Advancement;
 import net.minecraft.nbt.CompoundTag;

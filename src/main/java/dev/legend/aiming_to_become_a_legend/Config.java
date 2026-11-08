@@ -1,4 +1,4 @@
-package com.github.yutak.aiming_to_become_a_legend;
+package dev.legend.aiming_to_become_a_legend;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
